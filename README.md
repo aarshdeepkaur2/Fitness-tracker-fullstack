@@ -20,9 +20,7 @@ This project is being developed as part of the Full Stack Development course.
 The Fitness Tracker App is designed to allow users to log workouts, track their fitness journey, and record daily meals to stay on top of their health goals.The app will consist of multiple components (Header, Navigation, Workout Log, Footer, etc.).
  
 ## User Stories
--As a user,I want my daily workout logo,so that I can track my fitness progress time.
--As a user,I want to see a summary of my progress, so that I can stay motivated and reach my goals. 
--As a user,I want to record my meals, so that I can monitor my calorie intake alongside my workouts.
-
-
+- As a user,I want my daily workout logo,so that I can track my fitness progress time.
+- As a user,I want to see a summary of my progress, so that I can stay motivated and reach my goals.
+- As a user,I want to record my meals, so that I can monitor my calorie intake alongside my workouts.
  
