@@ -1,4 +1,3 @@
-
 # Fitness Tracker App
  
 A simple full-stack application that helps users track their workouts, meals, and overall fitness progress over time.  
@@ -7,7 +6,7 @@ This project is being developed as part of the Full Stack Development course.
  
 ## Project Team
 
-- Team Name:Unstoppable Coders  
+- Team Name: Unstoppable Coders
 
 # Team Members:
 
