@@ -1,0 +1,20 @@
+
+.progress-tracker {
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.progress-tracker h2 {
+  color: #003366;
+  margin-bottom: 0.5rem;
+}
+
+.progress-tracker li {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
