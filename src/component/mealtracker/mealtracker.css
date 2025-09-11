@@ -1,0 +1,74 @@
+.meal-tracker {
+  background: #1aa484;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meal-tracker:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(202, 144, 144, 0.18);
+}
+
+.meal-tracker h2 {
+  margin-bottom: 1.5rem;
+  color: #1d82e8;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #05896f;
+  padding-bottom: 0.5rem;
+}
+
+/* List Styling */
+.meal-tracker ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meal-tracker li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #06b4e0, #ffffff);
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.meal-tracker li:hover {
+  transform: scale(1.02);
+  background: linear-gradient(90deg, #a82727, #ecf0f1);
+}
+
+.meal-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.meal-calories {
+  font-weight: 600;
+  color: #e74c3c;
+  background: #ffeaea;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* Total Calories Highlight */
+.total {
+  margin-top: 1.8rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #f39c12;
+  text-align: right;
+  padding-top: 0.8rem;
+  border-top: 2px dashed #dcdcdc;
+}
