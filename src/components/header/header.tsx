@@ -12,7 +12,7 @@ export default function Header() {
           />
         </span>
       <h1>Fitness Tracker</h1>
-      <p>Our Fitness team welcomes you!! </p>
+      <p>Welcome to the Fitness Journey!!</p>
       <p>Track your workouts, monitor progress, and stay motivated. </p>
     </header>
   );
