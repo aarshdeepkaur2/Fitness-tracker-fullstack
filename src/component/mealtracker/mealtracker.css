@@ -1,74 +1,130 @@
+/* App Container */
+body {
+  background: linear-gradient(135deg, #0d9488, #0891b2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Meal Tracker as a Card */
 .meal-tracker {
-  background: #1aa484;
-  border-radius: 20px;
+  background: #ffffff;
+  border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.6s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
-.meal-tracker:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 26px rgba(202, 144, 144, 0.18);
-}
-
+/* Header */
 .meal-tracker h2 {
   margin-bottom: 1.5rem;
-  color: #1d82e8;
+  color: #0f766e;
   text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  border-bottom: 3px solid #05896f;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #14b8a6;
   padding-bottom: 0.5rem;
 }
 
-/* List Styling */
+/* Meal List */
 .meal-tracker ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Meal Item as Card */
 .meal-tracker li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(90deg, #06b4e0, #ffffff);
+  background: #f9fafb;
   padding: 0.9rem 1.2rem;
-  margin-bottom: 0.8rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, background 0.2s ease;
+  margin-bottom: 0.9rem;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
 }
+
+.meal-tracker li:nth-child(1) { animation-delay: 0.1s; }
+.meal-tracker li:nth-child(2) { animation-delay: 0.2s; }
+.meal-tracker li:nth-child(3) { animation-delay: 0.3s; }
+.meal-tracker li:nth-child(4) { animation-delay: 0.4s; }
 
 .meal-tracker li:hover {
   transform: scale(1.02);
-  background: linear-gradient(90deg, #a82727, #ecf0f1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+/* Meal Name & Calories */
 .meal-name {
   font-weight: 600;
-  color: #2c3e50;
+  color: #374151;
+  font-size: 1rem;
 }
 
 .meal-calories {
-  font-weight: 600;
-  color: #e74c3c;
-  background: #ffeaea;
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  padding: 0.4rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Total Calories Highlight */
+/* Total Calories */
 .total {
-  margin-top: 1.8rem;
-  font-weight: bold;
+  margin-top: 1.5rem;
+  font-weight: 700;
   font-size: 1.3rem;
-  color: #f39c12;
+  color: #0f766e;
   text-align: right;
   padding-top: 0.8rem;
-  border-top: 2px dashed #dcdcdc;
+  border-top: 2px dashed #d1d5db;
+}
+
+/* Animations */
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive: Mobile Look */
+@media (max-width: 480px) {
+  .meal-tracker {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  .meal-tracker h2 {
+    font-size: 1.6rem;
+  }
+  .meal-name {
+    font-size: 0.95rem;
+  }
+  .meal-calories {
+    font-size: 0.85rem;
+  }
 }

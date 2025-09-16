@@ -1,3 +1,5 @@
+import "./mealtracker.css";
+
 // High-level component file
 
 interface Meal {
