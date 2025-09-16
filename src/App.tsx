@@ -1,6 +1,6 @@
 import "./App.css";
-import "./Components/progresstracker";
-import ProgressTracker from "./Components/progresstracker";
+import "./Components/progresstracker/progresstracker";
+import ProgressTracker from "./Components/progresstracker/progresstracker";
 
  
 function App() {
