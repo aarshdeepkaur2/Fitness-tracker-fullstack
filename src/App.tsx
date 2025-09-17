@@ -1,13 +1,15 @@
 import "./App.css";
 import WorkoutLog from "./components/workoutlogs/Workoutlog";
 import Header from "./components/header/header";
+import NavBar from "./components/nav/nav";
 
 function App() {
   return (
     
     <>
-      < Header />
-      < WorkoutLog /> 
+    < Header />
+    < NavBar />
+    < WorkoutLog />
     </>
   );
 };
