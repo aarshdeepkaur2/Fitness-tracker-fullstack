@@ -1,20 +1,40 @@
 
 .progress-tracker {
-  background-color: #f2f2f2;
-  padding: 1rem;
-  border-radius: 8px;
+  background-color: #f1eded;
+  padding: 10rem;
+  border-radius: 50px;
   margin: 1rem 0;
 }
 
+.progress-tracker {
+  font-size: 20px;
+}
+
+.progress-tracker img {
+  width: 800px;   
+  height: 400px;  
+}
+
+
+
 .progress-tracker h2 {
   color: #003366;
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .progress-tracker li {
-  background: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  background: #ebdddd;
+  border: 9px solid #beb9b9;
+  border-radius: 30px;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  width: 700px;
+  
 }
+
+.progress-tracker ul {
+  list-style-type: none; 
+  padding-left: 0;       
+  margin: 0;
+}
+
