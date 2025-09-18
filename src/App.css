@@ -45,7 +45,7 @@
 
 body {
   font-family: 'Times New Roman', Times, serif, sans-serif;
-  background-color: hsl(0, 0%, 98%);
+  background-color: #f9fafc;
   color: #333;
   margin: 0;
   padding: 0;
@@ -53,7 +53,6 @@ body {
 }
 
 main {
-  background-color: lightgray;
   width: 100%;
   margin: auto;
   padding: 1em;

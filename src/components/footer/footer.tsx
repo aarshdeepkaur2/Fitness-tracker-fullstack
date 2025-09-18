@@ -12,5 +12,6 @@ function Footer({ team }: { team: string[] }) {
   );
 }
 
+export default Footer;
 
 
