@@ -1,0 +1,29 @@
+.workoutlog {
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  color: black;
+  margin-top: 1rem;
+}
+
+.workoutlog h2 {
+  color: #3a79b8;
+  margin-bottom: 1rem;
+}
+
+.workoutlog ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.workoutlog li {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.workoutlog p {
+  margin: 0.25rem 0;
+}
