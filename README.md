@@ -1,69 +1,26 @@
-# React + TypeScript + Vite
+# Fitness Tracker App
+ 
+A simple full-stack application that helps users track their workouts, meals, and overall fitness progress over time.  
+This project is being developed as part of the Full Stack Development course.
+ 
+ 
+## Project Team
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Team Name: Unstoppable Coders
 
-Currently, two official plugins are available:
+# Team Members:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Kiranjeet Kaur Sidhu
+- Arshdeep Kaur
+- Ashmandeep Kaur
+ 
+ 
+## General Idea of Fitness-tracker app:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The Fitness Tracker App is designed to allow users to log workouts, track their fitness journey, and record daily meals to stay on top of their health goals.The app will consist of multiple components (Header, Navigation, Workout Log, Footer, etc.).
+ 
+## User Stories
+- As a user,I want my daily workout logo,so that I can track my fitness progress time.
+- As a user,I want to see a summary of my progress, so that I can stay motivated and reach my goals.
+- As a user,I want to record my meals, so that I can monitor my calorie intake alongside my workouts.
+ 

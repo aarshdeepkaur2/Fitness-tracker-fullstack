@@ -1,3 +1,4 @@
+
 import "./Footer.css";
 
 function Footer({ team }: { team: string[] }) {
@@ -11,4 +12,5 @@ function Footer({ team }: { team: string[] }) {
   );
 }
 
-export default Footer;
+
+
