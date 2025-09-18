@@ -1,13 +1,16 @@
-import "./Footer.css"
 
-function Footer() {
-    const year = new Date().getFullYear();
-  
-    return (
-      <footer>
-        Pixell River Financial © {year}
-      </footer>
-    );
-  }
-  
-  export default Footer;
+import "./Footer.css";
+
+function Footer({ team }: { team: string[] }) {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer>
+      <p>Fitness Tracker Team © {year}</p>
+      <p>Team Members: {team.join(", ")}</p>
+    </footer>
+  );
+}
+
+
+
