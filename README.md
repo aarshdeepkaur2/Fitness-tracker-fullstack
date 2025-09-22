@@ -31,6 +31,7 @@ The Fitness Tracker App is designed to allow users to log workouts, track their 
 - Progress-Tracker: Kiranjeet Kaur Sidhu 
 - Meal Tracker: Ashmandeep Kaur
 
+## Other Tasks:
 - Repository setup: Arshdeep Kaur
 - Project README.md: Intially the Project README file was created by Kiranjeet Kaur, but later was updated by Arshdeep Kaur with latest changes.
 - Project Intialization : Arshdeep Kaur
