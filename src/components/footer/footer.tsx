@@ -1,5 +1,5 @@
 
-import "./Footer.css";
+import "./footer.css";
 
 function Footer({ team }: { team: string[] }) {
   const year = new Date().getFullYear();
