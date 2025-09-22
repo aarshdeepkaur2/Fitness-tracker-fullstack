@@ -12,7 +12,7 @@ export function ProgressTracker() {
   return (
     <section className="progress-tracker">
       <h2><i>Progress Tracker</i></h2>
-      <img src="/Fitness.png" alt="Fitness Progress" width="300" height="200" />
+      <img src="/Fitness.png" alt="Fitness Progress" width="250" height="150" />
  
       <ul>
         {progress.map((item) => (
