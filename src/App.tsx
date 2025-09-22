@@ -1,11 +1,11 @@
 import "./App.css"
 
-import WorkoutLog from "./components/workoutlogs/Workoutlog";
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import NavBar from "./components/nav/nav";
-import MealTracker from "./components/mealtracker/mealtracker";
-import ProgressTracker from "./components/progresstracker/progresstracker";
+import WorkoutLog from "./Components/workoutlogs/Workoutlog";
+import Header from "./Components/header/header";
+import Footer from "./Components/footer/footer";
+import NavBar from "./Components/nav/nav";
+import MealTracker from "./Components/mealtracker/mealtracker";
+import ProgressTracker from "./Components/progresstracker/progresstracker";
 
 
 function App() {
