@@ -1,3 +1,11 @@
+/* 
+Colour Palette
+ Primary Blue: #2b35ea   (used for backgrounds, headers)
+ Accent Yellow: rgb(209, 196, 4) (used for headings, hover highlights)
+ Neutral White: #ffffff  (used for data backgrounds)
+ Light Gray: #f9fafc     (used for page background)
+ Dark Gray: #333333      (used for main text)
+*/
 
 .logo {
   height: 6em;
