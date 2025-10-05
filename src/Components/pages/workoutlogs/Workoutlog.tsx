@@ -1,5 +1,5 @@
 import "./Workoutlog.css";
-import workouts from "../../assets/workoutdata.json";
+import workouts from "../../../assets/workoutdata.json";
 
 export default function WorkoutLog() {
   return (
