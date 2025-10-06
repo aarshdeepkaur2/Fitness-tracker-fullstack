@@ -20,7 +20,7 @@ function App() {
           element: <Header />,
         },
         {
-          path: "workouts",
+          path: "workout-log",
           element: (
             <WorkoutLog
               workoutsCompleted={workoutsCompleted}
