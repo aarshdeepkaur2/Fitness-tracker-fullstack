@@ -43,3 +43,11 @@ The Fitness Tracker App is designed to allow users to log workouts, track their 
 **Note:** Some of the things in the *fitness tracker* has been done from one laptop because of technical issues in other laptops of team members.Also,the json data in the app has been genrated by AI with the permissions of the instructor.
 
 
+## Project -2 
+- Muti-age Navigation: This part was divided in the team.
+-  Shared state across pages: Arshdeep Kaur 
+- Workout Feature page: This part was done by Arshdeep Kaur.
+- Meal-Tracker Component: By Ashmandeep Kaur 
+- Progress- Tracker Component: This part was done by Kiranjeet Kaur Sidhu.
+- Navigation-Interface: This part was completed by Arshdeep Kaur.
+- README-Updation: This was done by Arshdeep Kaur and Reviwed by all team members.

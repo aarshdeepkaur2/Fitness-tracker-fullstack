@@ -1,28 +1,50 @@
-import "./App.css"
-
-import WorkoutLog from "./components/workoutlogs/Workoutlog";
-import Header from "./components/header/header";
-import Footer from "./components/footer/footer";
-import NavBar from "./components/nav/nav";
-import MealTracker from "./components/mealtracker/mealtracker";
-import ProgressTracker from "./components/progresstracker/progresstracker";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
+import { Layout } from "./Components/Layout/Layout";
+import WorkoutLog from "./Components/pages/workoutlogs/Workoutlog";
+import ProgressTracker from "./Components/pages/progresstracker/progresstracker";
+import MealTracker from "./Components/pages/mealtracker/mealtracker";
+import Header from "./Components/pages/LandingPage/header/header";
+import { NotFound } from "./Components/pages/NotFound/NotFound";
 
 function App() {
-  return (
-    
-    <>
+  const [workoutsCompleted, setWorkoutsCompleted] = useState(0);
 
-      < Header />
-      < NavBar />
-      < WorkoutLog />
-      < MealTracker />
-      < ProgressTracker />
-      < Footer team={["Arshdeep Kaur", "Ashmandeep Kaur", "Kiranjeet Kaur"]} /> 
-    </>
-  );
-};
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <Header />,
+        },
+        {
+          path: "workout-log",
+          element: (
+            <WorkoutLog
+              workoutsCompleted={workoutsCompleted}
+              setWorkoutsCompleted={setWorkoutsCompleted}
+            />
+          ),
+        },
+        {
+          path: "progress-tracker",
+          element: <ProgressTracker />,
+        },
+        {
+          path: "meal-tracker",
+          element: <MealTracker />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
 
-
+  return <RouterProvider router={router} />;
+}
 
 export default App;
