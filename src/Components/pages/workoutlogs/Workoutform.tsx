@@ -33,7 +33,6 @@ export default function WorkoutForm({ onAddWorkout }: WorkoutFormProps) {
   return (
     <form onSubmit={handleSubmit} className="workout-form">
       <h3>Add a New Workout Set </h3>
-
       <input
         type="date"
         value={newWorkout.date}
