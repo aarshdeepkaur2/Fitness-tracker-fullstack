@@ -1,4 +1,4 @@
-meal-tracker {
+.meal-tracker {
   background: #ffffff;
   border-radius: 24px;
   padding: 2rem;
@@ -14,7 +14,7 @@ meal-tracker {
 }
 
 /* Header */
-meal-tracker h2 {
+.meal-tracker h2 {
   margin-bottom: 1.5rem;
   color: #2b35ea;
   text-align: center;
@@ -25,14 +25,14 @@ meal-tracker h2 {
 }
 
 /* List */
-meal-tracker ul {
+.meal-tracker ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 /* List Item */
-meal-tracker li {
+.meal-tracker li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,18 +46,18 @@ meal-tracker li {
   opacity: 0;
 }
 
-meal-tracker li:hover {
+.meal-tracker li:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 /* Text Styling */
-meal- {
+.meal-name {
   font-weight: 600;
   color: #374151;
 }
 
-meal-calories {
+.meal-calories {
   font-weight: 700;
   color: #fff;
   background: #2b35ea;
@@ -67,7 +67,7 @@ meal-calories {
 }
 
 /* Total Calories */
-total {
+.total {
   margin-top: 1.5rem;
   font-weight: 700;
   font-size: 1.3rem;
