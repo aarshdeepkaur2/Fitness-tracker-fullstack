@@ -69,7 +69,7 @@ export function useWorkouts(dependencies: unknown[] = []) {
   }, [workouts, filters]);
 
   const setSearchoption = (term: string) =>
-    setFilters((prev) => ({ ...prev, searchTerm: term }));
+    setFilters((prev) => ({ ...prev, search: term }));
 
   const setFavoritesOnly = (fav: boolean) =>
     setFilters((prev) => ({ ...prev, favoritesOnly: fav }));
