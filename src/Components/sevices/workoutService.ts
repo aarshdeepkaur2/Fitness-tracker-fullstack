@@ -1,5 +1,5 @@
 import type { Workout } from "../types/workout";
-import * as workoutRepository from "../../api/Workoutrepo";
+import * as workoutRepository from "../../apis/workoutRepo";
 
 /* Handles all  logic for working with workout.*/
 export const WorkoutService = {
