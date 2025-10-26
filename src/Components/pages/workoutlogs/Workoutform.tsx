@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { Button } from "../../../../ui/Button";
+import type { Workout } from "../../types/workout";
 import "./Workoutlog.css";
 
-export interface Workout {
-  id: number;
-  date: string;
-  exercise: string;
-  reps: string;
-}
+
 interface WorkoutFormProps {
   onAddWorkout: (newWorkout: Omit<Workout, "id">) => void;
 }
