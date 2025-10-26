@@ -1,60 +1,65 @@
-import "./progresstracker.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useProgress } from "../../../hooks/useProgress";
+import "../progresstracker/progresstracker.css";
 
-function ProgressTracker() {
-
-  const [progress, setProgress] = useState([
-    { id: 1, date: "2025-09-01", goal: "Run 2 km", status: "Completed" },
-    { id: 2, date: "2025-09-03", goal: "30 push-ups", status: "Completed" },
-    { id: 3, date: "2025-09-05", goal: "Yoga 20 min", status: "In Progress" }
-  ]);
+export default function ProgressTracker() {
+  const {
+    progress,
+    addGoal,
+    markNotStarted,
+    markInProgress,
+    markCompleted,
+    removeGoal,
+  } = useProgress();
 
   const [newGoal, setNewGoal] = useState("");
 
-  function addGoal(e) {
-    e.preventDefault();
-    if (newGoal === "") return;
-    const newItem = {
-      id: progress.length + 1,
-      date: new Date().toISOString().split("T")[0],
-      goal: newGoal,
-      status: "Not Started"
-    };
-    setProgress([...progress, newItem]);
-    setNewGoal("");
-  }
+  const handleAddGoal = (e: React.FormEvent) => {
 
-  function removeGoal(id) {
-    setProgress(progress.filter(item => item.id !== id));
-  }
+    e.preventDefault();
+    if (newGoal.trim()) {
+      addGoal(newGoal);
+      setNewGoal("");
+    }
+  };
 
   return (
-    <section className="progress-tracker">
-      <h2>Progress Tracker</h2>
-      <img src="/Fitness.png" alt="Fitness Progress" width="250" height="150" />
+    <div className="progress-tracker">
+      {/* showing image on top */}
 
-      <form onSubmit={addGoal}>
+      <img src="/Fitness.png" alt="Fitness" />
+
+      <h2>My Progress Tracker</h2>
+
+      <form onSubmit={handleAddGoal}>
+
         <input
           type="text"
-          placeholder="Enter new goal"
           value={newGoal}
           onChange={(e) => setNewGoal(e.target.value)}
+          placeholder="write your new goal"
         />
-        <button type="submit">Add</button>
+        <button type="submit">Add </button>
       </form>
 
       <ul>
         {progress.map((item) => (
           <li key={item.id}>
-            <p><b>Date:</b> {item.date}</p>
-            <p><b>Goal:</b> {item.goal}</p>
-            <p><b>Status:</b> {item.status}</p>
-            <button onClick={() => removeGoal(item.id)}>Remove</button>
+            <div className="goal-info">
+              <strong>{item.goal}</strong> — {item.status} ({item.date})
+            </div>
+
+            <div className="status-buttons">
+              <button onClick={() => markNotStarted(item.id)}>Not Started</button>
+              <button onClick={() => markInProgress(item.id)}>In Progress</button>
+              <button onClick={() => markCompleted(item.id)}>Done</button>
+              <button className="remove" onClick={() => removeGoal(item.id)}>
+                Remove
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   );
 }
-
-export default ProgressTracker;
