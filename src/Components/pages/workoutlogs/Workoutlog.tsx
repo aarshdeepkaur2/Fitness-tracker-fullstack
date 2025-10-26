@@ -3,15 +3,9 @@ import { Button } from "../../../../ui/Button";
 import workoutsData from "../../../assets/workoutdata.json";
 import WorkoutForm from "./Workoutform";
 import { Star, Share } from "lucide-react";
+import type { Workout } from "../../types/workout"
 import "./Workoutlog.css";
 
-export interface Workout {
-  id: number;
-  date: string;
-  exercise: string;
-  reps: string;
-  favorite?: boolean;
-}
 
 interface WorkoutLogProps {
   workoutsCompleted: number;
@@ -50,6 +44,7 @@ export default function WorkoutLog({ workoutsCompleted, setWorkoutsCompleted }: 
   return (
     <section className="workoutlog">
       <h2><i><b>My Workout Log</b></i></h2>
+
 
       <p><i>No of Today's Workouts Goal Completed: <strong>{workoutsCompleted}</strong></i></p>
       <Button onClick={() => setWorkoutsCompleted(workoutsCompleted + 1)} className="add-button">
