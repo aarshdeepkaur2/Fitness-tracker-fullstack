@@ -1,76 +1,81 @@
 import { useState } from "react";
 import { Button } from "../../../../ui/Button";
-import workoutsData from "../../../assets/workoutdata.json";
 import WorkoutForm from "./Workoutform";
-import { Star, Share } from "lucide-react";
+import { Star, Pencil, Trash } from "lucide-react";
 import "./Workoutlog.css";
+import { useWorkouts } from "../../../hooks/useWorkout";
+import type { Workout } from "../../types/workout";
 
-export interface Workout {
-  id: number;
-  date: string;
-  exercise: string;
-  reps: string;
-  favorite?: boolean;
-}
+export default function WorkoutLog() {
+  // use of custom hook 
+  const {
+    filteredWorkouts,
+    addWorkout,
+    removeWorkout,
+    toggleFavorite,
+    setSearchoption,
+    setFavoritesOnly,
+    updateWorkout,
+    filters,
+    error,
+    success,
+  } = useWorkouts();
+  const [editingWorkout, setEditingWorkout] = useState<Workout | null>(null);
+  const [showForm, setShowForm] = useState(false);
 
-interface WorkoutLogProps {
-  workoutsCompleted: number;
-  setWorkoutsCompleted: React.Dispatch<React.SetStateAction<number>>;
-}
-
-export default function WorkoutLog({ workoutsCompleted, setWorkoutsCompleted }: WorkoutLogProps) {
-  const [workouts, setWorkouts] = useState<Workout[]>(workoutsData);
-  const [filterText, setFilterText] = useState("");
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-
-  const handleAddWorkout = (newWorkout: Omit<Workout, "id">) => {
-    const workoutWithId: Workout = { ...newWorkout, id: workouts.length + 1, favorite: false };
-    setWorkouts([...workouts, workoutWithId]);
+  // Handle adding or updating a workout
+  const handleAddOrUpdateWorkout = (newWorkout: Omit<Workout, "id" | "favorite">) => {
+    if (editingWorkout) {
+      updateWorkout(editingWorkout.id, newWorkout); 
+      setEditingWorkout(null); 
+    } else {
+      addWorkout(newWorkout); 
+    }
+    setShowForm(false); 
   };
 
+  // Edit mode and show form
+  const handleEditClick = (workout: Workout) => {
+    setEditingWorkout(workout);
+    setShowForm(true);
+  };
+
+  // Show form for adding a new workout
+  const handleAddClick = () => {
+    setEditingWorkout(null);
+    setShowForm(true);
+  };
+
+  // Remove workout using hook
   const handleRemoveWorkout = (id: number) => {
-    setWorkouts(workouts.filter((w) => w.id !== id));
+    removeWorkout(id);
   };
-
-  const toggleFavorite = (id: number) => {
-    setWorkouts(
-      workouts.map((w) => (w.id === id ? { ...w, favorite: !w.favorite } : w))
-    );
-  };
-
-  const filteredWorkouts = workouts.filter((w) => {
-    const matchesText =
-      w.exercise.toLowerCase().includes(filterText.toLowerCase()) ||
-      w.reps.toLowerCase().includes(filterText.toLowerCase()) ||
-      w.date.toLowerCase().includes(filterText.toLowerCase());
-    const matchesFavorite = showFavoritesOnly ? w.favorite : true;
-    return matchesText && matchesFavorite;
-  });
 
   return (
     <section className="workoutlog">
-      <h2><i><b>My Workout Log</b></i></h2>
-
-      <p><i>No of Today's Workouts Goal Completed: <strong>{workoutsCompleted}</strong></i></p>
-      <Button onClick={() => setWorkoutsCompleted(workoutsCompleted + 1)} className="add-button">
-        Complete a Workout
-      </Button>
-
-      <WorkoutForm onAddWorkout={handleAddWorkout} />
-
-      <div className="flex gap-2 my-2">
+      <h2><b>My Workout Log</b></h2>
+      
+      <div className="filter-section">
         <input
           type="text"
           placeholder="Filter by exercise, date, or reps"
-          value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
+          value={filters.search}
+          onChange={(e) => setSearchoption(e.target.value)}
           className="form-input"
         />
-        <Button onClick={() => setShowFavoritesOnly(!showFavoritesOnly)} className="add-button">
-          {showFavoritesOnly ? "All Workouts" : "Get Favourite list!!!"}
+
+    
+        <Button onClick={handleAddClick} className="add-button">
+         Add New Workout Data
+        </Button> 
+       
+      
+        <Button onClick={() => setFavoritesOnly(!filters.favoritesOnly)} className="add-button">
+          {filters.favoritesOnly ? "All Workouts" : "Get Favourite list!!!"}
         </Button>
       </div>
 
+  
       <ul>
         {filteredWorkouts.map((workout) => (
           <li key={workout.id}>
@@ -79,19 +84,38 @@ export default function WorkoutLog({ workoutsCompleted, setWorkoutsCompleted }: 
               <p><strong>Exercise:</strong> {workout.exercise}</p>
               <p><strong>Detailed Timings:</strong> {workout.reps}</p>
             </div>
-
-            <div className="flex gap-2">
+            <div className="button-group">
               <Button onClick={() => toggleFavorite(workout.id)}>
-                {workout.favorite ? <Star fill="Yellow" /> : <Star />}
+                {workout.favorite ? <Star fill="yellow" /> : <Star />}
               </Button>
-              <Button>
-                <Share />
+              <Button onClick={() => handleEditClick(workout)}>
+                <Pencil />
               </Button>
-              <Button onClick={() => handleRemoveWorkout(workout.id)}>Remove</Button>
+              <Button onClick={() => handleRemoveWorkout(workout.id)}>
+                <Trash />
+              </Button>
             </div>
           </li>
         ))}
       </ul>
+
+      {showForm && (
+        <div className="Edit-outside">
+          <div className="content">
+            <WorkoutForm
+              onAddWorkout={handleAddOrUpdateWorkout}
+              editingWorkout={editingWorkout}
+            />
+            <Button onClick={() => setShowForm(false)}>Close</Button>
+          </div>
+        </div>
+      )}
+
+      {(error || success) && (
+        <div className={`message ${error ? "error" : "success"}`}>
+          {error || success}
+        </div>
+      )}
     </section>
   );
 }

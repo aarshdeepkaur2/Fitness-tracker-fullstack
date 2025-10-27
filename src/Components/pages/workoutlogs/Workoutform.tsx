@@ -1,66 +1,79 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../../../ui/Button";
+import type { Workout } from "../../types/workout";
 import "./Workoutlog.css";
 
-export interface Workout {
-  id: number;
-  date: string;
-  exercise: string;
-  reps: string;
-}
 interface WorkoutFormProps {
-  onAddWorkout: (newWorkout: Omit<Workout, "id">) => void;
+  onAddWorkout: (newWorkout: Omit<Workout, "id" | "favorite">) => void;
+  onEditWorkout?: (updatedWorkout: Workout) => void;
+  editingWorkout?: Workout | null;
 }
 
-/* Adding workout form*/
-export default function WorkoutForm({ onAddWorkout }: WorkoutFormProps) {
-  const [newWorkout, setNewWorkout] = useState({
+export default function WorkoutForm({
+  onAddWorkout,
+  onEditWorkout,
+  editingWorkout,
+}: WorkoutFormProps) {
+  const [formData, setFormData] = useState({
     date: "",
     exercise: "",
     reps: "",
   });
 
+  useEffect(() => {
+    if (editingWorkout) {
+      setFormData({
+        date: editingWorkout.date,
+        exercise: editingWorkout.exercise,
+        reps: editingWorkout.reps,
+      });
+    } else {
+      setFormData({ date: "", exercise: "", reps: "" });
+    }
+  }, [editingWorkout]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newWorkout.date || !newWorkout.exercise || !newWorkout.reps) {
-      alert("Please fill in the Required fields!!!!");
-      return;
+    if (!formData.date || !formData.exercise || !formData.reps) return;
+
+    if (editingWorkout && onEditWorkout) {
+      onEditWorkout({ ...editingWorkout, ...formData });
+    } else {
+      onAddWorkout(formData);
     }
-    onAddWorkout(newWorkout); 
-    setNewWorkout({ date: "", exercise: "", reps: "" });
+
+    setFormData({ date: "", exercise: "", reps: "" });
   };
 
   return (
     <form onSubmit={handleSubmit} className="workout-form">
-      <h3>Add a New Workout Set </h3>
-
+      <h3>{editingWorkout ? "Edit Workout" : "Add a New Workout"}</h3>
       <input
         type="date"
-        value={newWorkout.date}
-        onChange={(e) => setNewWorkout({ ...newWorkout, date: e.target.value })}
+        value={formData.date}
+        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
         className="form-input"
         required
       />
-
       <input
         type="text"
-        placeholder="Name of Exercise"
-        value={newWorkout.exercise}
-        onChange={(e) => setNewWorkout({ ...newWorkout, exercise: e.target.value })}
+        placeholder="Nmae of Exercise"
+        value={formData.exercise}
+        onChange={(e) => setFormData({ ...formData, exercise: e.target.value })}
         className="form-input"
         required
       />
-
       <input
         type="text"
-        placeholder="Duration"
-        value={newWorkout.reps}
-        onChange={(e) => setNewWorkout({ ...newWorkout, reps: e.target.value })}
+        placeholder="Duration / Reps"
+        value={formData.reps}
+        onChange={(e) => setFormData({ ...formData, reps: e.target.value })}
         className="form-input"
         required
       />
-
-      <Button type="submit" className="add-button">Add Workout</Button>
+      <Button type="submit" className="add-button">
+        {editingWorkout ? "Update Workout" : "Add Workout"}
+      </Button>
     </form>
   );
 }
