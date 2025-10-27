@@ -10,6 +10,7 @@ interface FilterOptions {
 export function useWorkouts(dependencies: unknown[] = []) {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterOptions>({
     search: "",
     favoritesOnly: false,
@@ -28,6 +29,24 @@ export function useWorkouts(dependencies: unknown[] = []) {
     try {
       await WorkoutService.addWorkout(newWorkout);
       await fetchWorkouts();
+      setSuccess("New Workout data has been added successfully!!!");
+      setTimeout(() => setSuccess(null), 3000);
+    } catch (err: any) {
+      setError(err.message);
+
+    }
+  };
+
+  const updateWorkout = async (id: number, updates: Partial<Workout>) => {
+    try {
+      const updated = await WorkoutService.updateWorkout(id, updates);
+      if (updated) {
+        setWorkouts((prev) =>
+          prev.map((w) => (w.id === id ? { ...w, ...updated } : w))
+        );
+        setSuccess("Workout data has been updated successfully!");
+        
+      }
     } catch (err: any) {
       setError(err.message);
     }
@@ -37,19 +56,26 @@ export function useWorkouts(dependencies: unknown[] = []) {
     try {
       await WorkoutService.removeWorkout(id);
       await fetchWorkouts();
+      setWorkouts(prev => prev.filter(w => w.id !== id));
+      setSuccess("Workout data has been removed!");
     } catch (err: any) {
       setError(err.message);
     }
   };
 
   const toggleFavorite = async (id: number) => {
-    try {
-      await WorkoutService.toggleFavorite(id);
-      await fetchWorkouts();
-    } catch (err: any) {
-      setError(err.message);
-    }
-  };
+  try {
+    await WorkoutService.toggleFavorite(id);
+    setWorkouts((prev) =>
+      prev.map((w) =>
+        w.id === id ? { ...w, favorite: !w.favorite } : w
+      )
+    );
+  } catch (err: any) {
+    setError(err.message);
+  }
+};
+
 
   const filteredWorkouts = useMemo(() => {
     let result = [...workouts];
@@ -78,11 +104,27 @@ export function useWorkouts(dependencies: unknown[] = []) {
     fetchWorkouts();
   }, dependencies);
 
+  useEffect(() => {
+  if (success) {
+    const timer = setTimeout(() => setSuccess(null), 2000);
+    return () => clearTimeout(timer);
+  }
+}, [success]);
+
+useEffect(() => {
+  if (error) {
+    const timer = setTimeout(() => setError(null), 2000);
+    return () => clearTimeout(timer);
+  }
+}, [error]);
+
   return {
     workouts,
     filteredWorkouts,
     error,
+    success,
     addWorkout,
+    updateWorkout,
     removeWorkout,
     toggleFavorite,
     setSearchoption,
