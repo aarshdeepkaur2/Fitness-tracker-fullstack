@@ -51,3 +51,13 @@ The Fitness Tracker App is designed to allow users to log workouts, track their 
 - Progress- Tracker Component: This part was done by Kiranjeet Kaur Sidhu.
 - Navigation-Interface: This part was completed by Arshdeep Kaur.
 - README-Updation: This was done by Arshdeep Kaur and Reviwed by all team members.
+
+## Project -3
+
+- Hooks: All have decided to det up their own hook at their own.
+- Service: This has been decided by all and set up by all the team members.
+- Repository setup: All team members have set up their own repo.
+- Refactor: Code has been refactored to make the necessary changes.
+- Shared: This part was done by Arshdeep Kaur. 
+- README updation: This part has been done by Arshdeep Kaur but reviewd by all the team members.
+- Docs- This part was set up all the team members at thier own.
