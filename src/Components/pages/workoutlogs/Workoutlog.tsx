@@ -7,6 +7,7 @@ import { useWorkouts } from "../../hooks/useWorkout";
 import type { Workout } from "../../types/workout";
 
 export default function WorkoutLog() {
+  // use of custom hook 
   const {
     filteredWorkouts,
     addWorkout,
@@ -19,30 +20,33 @@ export default function WorkoutLog() {
     error,
     success,
   } = useWorkouts();
-
   const [editingWorkout, setEditingWorkout] = useState<Workout | null>(null);
   const [showForm, setShowForm] = useState(false);
 
+  // Handle adding or updating a workout
   const handleAddOrUpdateWorkout = (newWorkout: Omit<Workout, "id" | "favorite">) => {
     if (editingWorkout) {
-      updateWorkout(editingWorkout.id, newWorkout);
-      setEditingWorkout(null);
+      updateWorkout(editingWorkout.id, newWorkout); 
+      setEditingWorkout(null); 
     } else {
-      addWorkout(newWorkout);
+      addWorkout(newWorkout); 
     }
-    setShowForm(false);
+    setShowForm(false); 
   };
 
+  // Edit mode and show form
   const handleEditClick = (workout: Workout) => {
     setEditingWorkout(workout);
     setShowForm(true);
   };
 
+  // Show form for adding a new workout
   const handleAddClick = () => {
     setEditingWorkout(null);
     setShowForm(true);
   };
 
+  // Remove workout using hook
   const handleRemoveWorkout = (id: number) => {
     removeWorkout(id);
   };
@@ -50,7 +54,7 @@ export default function WorkoutLog() {
   return (
     <section className="workoutlog">
       <h2><b>My Workout Log</b></h2>
-
+      
       <div className="filter-section">
         <input
           type="text"
@@ -60,15 +64,18 @@ export default function WorkoutLog() {
           className="form-input"
         />
 
+    
         <Button onClick={handleAddClick} className="add-button">
          Add New Workout Data
         </Button> 
        
+      
         <Button onClick={() => setFavoritesOnly(!filters.favoritesOnly)} className="add-button">
           {filters.favoritesOnly ? "All Workouts" : "Get Favourite list!!!"}
         </Button>
       </div>
 
+  
       <ul>
         {filteredWorkouts.map((workout) => (
           <li key={workout.id}>
@@ -99,7 +106,7 @@ export default function WorkoutLog() {
               onAddWorkout={handleAddOrUpdateWorkout}
               editingWorkout={editingWorkout}
             />
-            <Button onClick={() => setShowForm(false)}>Exit</Button>
+            <Button onClick={() => setShowForm(false)}>Close</Button>
           </div>
         </div>
       )}
