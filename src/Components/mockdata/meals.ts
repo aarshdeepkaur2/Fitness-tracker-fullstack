@@ -1,4 +1,4 @@
-import type { Meal } from "../types/Meal";
+import type { Meal } from "../../types/Meal";
 
 export const testMeals: Meal[] = [
   { id: 1, name: "Oatmeal", calories: 150 },

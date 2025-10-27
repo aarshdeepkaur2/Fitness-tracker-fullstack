@@ -1,5 +1,5 @@
 import type { Meal } from "../types/Meal";
-import { mealRepository } from "../repositories/mealRepository";
+import { mealRepository } from "../apis/mealRepository";
 
 
 export const mealService = {

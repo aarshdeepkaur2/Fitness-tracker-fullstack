@@ -1,5 +1,5 @@
-import type { ProgressItem } from "../data/progressData";
-import { progressData } from "../data/progressData"
+import type { ProgressItem } from "../Components/mockdata/progressData";
+import { progressData } from "../Components/mockdata/progressData"
 
 
 export class ProgressRepository {

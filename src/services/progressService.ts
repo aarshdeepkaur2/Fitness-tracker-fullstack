@@ -1,5 +1,5 @@
 import { progressRepository } from "../apis/progressRepo";
-import type { ProgressItem } from "../data/progressData";
+import type { ProgressItem } from "../Components/mockdata/progressData";
 
 export class ProgressService {
   getAllProgress(): ProgressItem[] {

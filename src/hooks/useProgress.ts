@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type  { ProgressItem } from "../data/progressData";
+import type  { ProgressItem } from "../Components/mockdata/progressData";
 import { progressService } from "../services/progressService";
 
 export function useProgress() {

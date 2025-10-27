@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { WorkoutService } from "../sevices/workoutService";
-import type { Workout } from "../types/workout";
+import { WorkoutService } from "../services/workoutService";
+import type { Workout } from "../Components/types/workout";
 
 // filter Interaface options
 interface FilterOptions {

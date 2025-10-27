@@ -3,7 +3,7 @@ import { Button } from "../../../../ui/Button";
 import WorkoutForm from "./Workoutform";
 import { Star, Pencil, Trash } from "lucide-react";
 import "./Workoutlog.css";
-import { useWorkouts } from "../../hooks/useWorkout";
+import { useWorkouts } from "../../../hooks/useWorkout";
 import type { Workout } from "../../types/workout";
 
 export default function WorkoutLog() {

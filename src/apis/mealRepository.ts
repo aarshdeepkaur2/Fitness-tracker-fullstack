@@ -1,5 +1,5 @@
 import type { Meal } from "../types/Meal";
-import { testMeals } from "../testdata/meals";
+import { testMeals } from "../Components/mockdata/meals";
 
 
 export const mealRepository = {
