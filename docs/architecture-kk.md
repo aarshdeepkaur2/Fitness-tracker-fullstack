@@ -32,7 +32,7 @@ All goal-related operations are carried out by calling the `ProgressService` ins
 File: `src/hooks/useProgress.ts`
 
 ### What it does
-Gives React components reusable presentation logic. Maintains track of all goals' statuses and uses `progressService` to coordinate UI changes with data operations.
+“Provides reusable presentation logic for React components. Keeps track of all goal statuses and uses progressService to synchronize UI updates with data operations.”
 
 ### Why this logic belongs here
 React components can remain tidy and render-focused thanks to hooks. In order for it to be reused across other components if necessary, this hook encapsulates all state management (add, update, remove, and refresh).
@@ -44,7 +44,7 @@ Used in `ProgressTracker.tsx` to manage and display user progress interactively.
 File: `src/components/progresstracker/ProgressTracker.tsx`
 
 ### What it does
-offers the user interface for maintaining and showing fitness objectives. In addition to removing existing goals, users can designate them as Not Started, In Progress, or Completed.
+“Provides the user interface for displaying and managing fitness goals.” In addition to removing existing goals, users can designate them as Not Started, In Progress, or Completed.
 
 ### How it uses the architecture
 - Fetches and manages state through `useProgress` hook.  
