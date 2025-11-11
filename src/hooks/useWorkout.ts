@@ -26,7 +26,7 @@ export function useWorkouts(dependencies: unknown[] = []) {
   const fetchWorkouts = async () => {
     try {
       const data = await WorkoutService.fetchWorkouts(); 
-      setWorkouts(data);
+      setWorkouts([...data]);
     } catch (err: any) {
       // set errors
       setError(err.message); 
