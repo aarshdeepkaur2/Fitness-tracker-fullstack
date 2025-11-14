@@ -12,7 +12,7 @@ export const getAllWorkouts = async (
     const workouts = await workoutService.fetchAllWorkouts();
     res
       .status(200)
-      .json(successResponse(workouts, "Workouts has retrieved successfully"));
+      .json(successResponse(workouts, "Workouts have retrieved successfully"));
   } catch (error) {
     next(error);
   }
