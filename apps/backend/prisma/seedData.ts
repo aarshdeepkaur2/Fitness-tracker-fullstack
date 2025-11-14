@@ -1,4 +1,4 @@
-import { WorkoutLog } from "../generated/prisma/client";
+import {WorkoutLog}  from "@prisma/client";
 
 export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt">[] = [
   { date: new Date("2025-09-09"), exercise: "Push-ups", reps: "3 sets of 15", favorite: false },

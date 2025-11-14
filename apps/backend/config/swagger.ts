@@ -7,13 +7,23 @@ const swaggerOptions: swaggerJSDoc.Options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "API Documentation",
-            version: "1.0.0"
+            title: "Fitness Tracker",
+            version: "1.0.0",
+            description: "API documentation for the Fitness Tracker backend.",
 
-        }
+        },
+
+    servers: [
+      {
+        url: "http://localhost:3000/api/v1", 
+        description: "Development server",
+      },
+    ],
     },
+
     // path to annotated files
-    apis: ["./src/app.ts"]
+    apis: ["./src/app.ts", "./src/api/v1/routes/*.ts"],
+
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
