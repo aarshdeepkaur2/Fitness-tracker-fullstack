@@ -136,4 +136,25 @@ router.put("/workouts/:id", validateRequest(workoutSchema), workoutController.up
  */
 router.delete("/workouts/:id", workoutController.deleteWorkout);
 
+/**
+ * @swagger
+ * /workouts/{id}/favorite:
+ *   patch:
+ *     summary: Toggle favorite status for a workout
+ *     tags: [Workouts]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Favorite status toggled
+ *       404:
+ *         description: Workout not found
+ */
+router.patch("/workouts/:id/favorite", workoutController.toggleFavoriteWorkout);
+
+
 export default router;
