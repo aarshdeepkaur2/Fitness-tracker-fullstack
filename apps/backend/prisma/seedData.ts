@@ -17,3 +17,6 @@ export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt">
   { date: new Date("2025-08-27"), exercise: "Tricep Dips", reps: "3 sets of 12", favorite: false },
   { date: new Date("2025-08-26"), exercise: "Running", reps: "30 minutes at medium pace", favorite: false },
 ];
+
+
+
