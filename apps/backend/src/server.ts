@@ -4,7 +4,7 @@ import app from "./app";
 import { Server } from "http";
 
 // get port number from the .env file
-const PORT: string | 3000 = process.env.PORT || 3000;
+const PORT: string | 4000 = process.env.PORT || 4000;
 
 // imported app listens for requests on given server
 const server: Server = app.listen(PORT, () => {
