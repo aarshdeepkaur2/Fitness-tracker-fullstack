@@ -3,7 +3,7 @@ import prisma from "../lib/prisma";
 
 const router = Router();
 
-// ✅ GET all progress items
+// GET all progress items
 router.get("/", async (req, res) => {
   try {
     const progress = await prisma.progress.findMany({
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ POST create new progress goal (FIXED)
+//  POST create new progress goal (FIXED)
 router.post("/", async (req, res) => {
   try {
     const { goal } = req.body;
@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Goal cannot be empty" });
     }
 
-    // ❗ Prisma automatically fills:
+    //  Prisma automatically fills:
     // - date (now())
     // - status (NOT_STARTED)
     // So we DO NOT send them.
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ PUT update status
+//  PUT update status
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -61,7 +61,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// ✅ DELETE remove goal
+//  DELETE remove goal
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
