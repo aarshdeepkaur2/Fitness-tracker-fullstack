@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Progress {
+  id        Int      @id @default(autoincrement())
+  goal      String
+  date      DateTime @default(now())
+  status    Status   @default(NOT_STARTED)
+  createdAt DateTime @default(now())
+}
