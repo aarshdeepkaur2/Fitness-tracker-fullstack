@@ -1,6 +1,7 @@
 import {WorkoutLog}  from "@prisma/client";
 
 export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" | "userId">[] = [
+
   { date: new Date("2025-09-09"), exercise: "Push-ups", reps: "3 sets of 15", favorite: false },
   { date: new Date("2025-09-08"), exercise: "Squats", reps: "4 sets of 20", favorite: false },
   { date: new Date("2025-09-07"), exercise: "Plank", reps: "3 sets of 60s", favorite: false },
@@ -16,4 +17,17 @@ export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" 
   { date: new Date("2025-08-28"), exercise: "Shoulder Press", reps: "3 sets of 10", favorite: false },
   { date: new Date("2025-08-27"), exercise: "Tricep Dips", reps: "3 sets of 12", favorite: false },
   { date: new Date("2025-08-26"), exercise: "Running", reps: "30 minutes at medium pace", favorite: false },
+];
+
+export const mealData: Prisma.MealCreateInput[] = [
+  { name: "Oatmeal", calories: 150 },
+  { name: "Grilled Chicken", calories: 250 },
+  { name: "Salad", calories: 100 },
+  { name: "Protein Shake", calories: 200 },
+  { name: "Rice and Beans", calories: 300 },
+  { name: "Avocado Toast", calories: 180 },
+  { name: "Apple", calories: 90 },
+  { name: "Eggs", calories: 220 },
+  { name: "Smoothie", calories: 160 },
+  { name: "Tuna Sandwich", calories: 280 },
 ];

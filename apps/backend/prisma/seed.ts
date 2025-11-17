@@ -119,3 +119,4 @@ async function seedData() {
 
   console.log(" Seeded 10 workouts linked to users");
 }
+
