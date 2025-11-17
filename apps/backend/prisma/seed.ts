@@ -125,7 +125,7 @@ async function seedData() {
 
 async function seedMealData() {
   // Clear meal data
-  await prisma.meal.deleteMany();
+  await prisma.Meal.deleteMany();
 
   console.log(" Cleared existing meal data");
 
