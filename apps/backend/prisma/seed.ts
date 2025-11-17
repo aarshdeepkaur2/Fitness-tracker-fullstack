@@ -120,23 +120,3 @@ async function seedData() {
   console.log(" Seeded 10 workouts linked to users");
 }
 
-
-
-
-async function seedMealData() {
-  // Clear meal data
-  await prisma.Meal.deleteMany();
-
-  console.log(" Cleared existing meal data");
-
-  // Insert meal test data
-  await prisma.meal.createMany({
-    data: mealData,
-  });
-
-  console.log(" Seeded 10 meals into the database!");
-
-  // Show total meals count
-  const count = await prisma.meal.count();
-  console.log(`Total meals in database: ${count}`);
-}

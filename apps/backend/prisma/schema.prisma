@@ -31,6 +31,7 @@ model WorkoutLog {
   userId     String?  
   user       User?     @relation(fields: [userId], references: [id])
 }
+<<<<<<< HEAD
 
 
 
@@ -41,3 +42,5 @@ model Meal {
   calories  Int
   createdAt DateTime @default(now())
 }
+=======
+>>>>>>> dev

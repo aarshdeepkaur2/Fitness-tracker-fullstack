@@ -1,7 +1,7 @@
 import {WorkoutLog}  from "@prisma/client";
-import {Meal} from "@prisma/client";
 
-export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" | "userId" >[] = [
+export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" | "userId">[] = [
+
   { date: new Date("2025-09-09"), exercise: "Push-ups", reps: "3 sets of 15", favorite: false },
   { date: new Date("2025-09-08"), exercise: "Squats", reps: "4 sets of 20", favorite: false },
   { date: new Date("2025-09-07"), exercise: "Plank", reps: "3 sets of 60s", favorite: false },
@@ -18,8 +18,6 @@ export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" 
   { date: new Date("2025-08-27"), exercise: "Tricep Dips", reps: "3 sets of 12", favorite: false },
   { date: new Date("2025-08-26"), exercise: "Running", reps: "30 minutes at medium pace", favorite: false },
 ];
-
-
 
 export const mealData: Prisma.MealCreateInput[] = [
   { name: "Oatmeal", calories: 150 },

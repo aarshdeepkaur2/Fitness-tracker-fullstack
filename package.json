@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "workspaces": [
-    "apps/*"
-  ],
+    "apps/*"], 
+    
   "main": "index.js",
   "directories": {
     "doc": "docs"
