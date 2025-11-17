@@ -147,7 +147,7 @@ router.delete("/workouts/:id", workoutController.deleteWorkout);
  *         in: path
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *     responses:
  *       200:
  *         description: Favorite status toggled
