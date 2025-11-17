@@ -67,3 +67,15 @@ export const deleteWorkout = async (id: string): Promise<void> => {
   });
 };
 
+export const toggleFavoriteWorkout = async (id: string): Promise<WorkoutLog> => {
+  const workout = await prisma.workoutLog.findUnique({ where: { id } });
+
+  if (!workout) {
+    throw new Error(`Workout with ID ${id} not found`);
+  }
+
+  return prisma.workoutLog.update({
+    where: { id },
+    data: { favorite: !workout.favorite },
+  });
+};

@@ -84,4 +84,18 @@ export const deleteWorkout = async (
   }
 };
 
-
+export const toggleFavoriteWorkout = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const workoutId = req.params.id;
+    const updatedWorkout = await workoutService.toggleFavoriteWorkout(workoutId);
+    res
+      .status(200)
+      .json(successResponse(updatedWorkout, "Favorite status has been toggled successfully!!"));
+  } catch (error) {
+    next(error);
+  }
+};

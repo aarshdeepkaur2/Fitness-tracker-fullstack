@@ -1,6 +1,6 @@
 import {WorkoutLog}  from "@prisma/client";
 
-export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt">[] = [
+export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" | "userId">[] = [
   { date: new Date("2025-09-09"), exercise: "Push-ups", reps: "3 sets of 15", favorite: false },
   { date: new Date("2025-09-08"), exercise: "Squats", reps: "4 sets of 20", favorite: false },
   { date: new Date("2025-09-07"), exercise: "Plank", reps: "3 sets of 60s", favorite: false },
