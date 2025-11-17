@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { progressService } from "../services/progressService";
 import type { ProgressItem } from "../Components/mockdata/progressData";
+import { progressService } from "../services/progressService";
 
 export function useProgress() {
   const [progress, setProgress] = useState<ProgressItem[]>([]);
@@ -12,6 +12,10 @@ export function useProgress() {
     } catch (error) {
       console.error("Failed to load data:", error);
     }
+
+    const data = await progressService.getAllProgress();
+    setProgress(data);
+
   };
 
   useEffect(() => {
