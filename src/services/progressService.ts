@@ -1,31 +1,33 @@
-import { progressRepository } from "../apis/progressRepo";
 import type { ProgressItem } from "../Components/mockdata/progressData";
 
+const API = "http://localhost:3000/progress";
+
 export class ProgressService {
-  getAllProgress(): ProgressItem[] {
-
-    return progressRepository.getAll();
+  async getAllProgress(): Promise<ProgressItem[]> {
+    const response = await fetch(API);
+    return await response.json();
   }
 
-  addNewGoal(goal: string): void {
-
-    const newItem: ProgressItem = {
-      id: Date.now(),
-      date: new Date().toISOString().split("T")[0],
-      goal,
-      status: "Not Started"
-    };
-    progressRepository.add(newItem);
+  async addNewGoal(goal: string): Promise<void> {
+    await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ goal })
+    });
   }
 
-  //  change goal status (Not Started / In Progress / Completed)
-
-  changeStatus(id: number, status: string): void {
-    progressRepository.update(id, status);
+  async changeStatus(id: number, status: string): Promise<void> {
+    await fetch(`${API}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status })
+    });
   }
 
-  removeGoal(id: number): void {
-    progressRepository.remove(id);
+  async removeGoal(id: number): Promise<void> {
+    await fetch(`${API}/${id}`, {
+      method: "DELETE",
+    });
   }
 }
 

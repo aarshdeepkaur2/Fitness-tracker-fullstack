@@ -1,27 +1,30 @@
-import type { ProgressItem } from "../Components/mockdata/progressData";
-import { progressData } from "../Components/mockdata/progressData"
-
+import axios from "axios";
 
 export class ProgressRepository {
-  private item = [...progressData];
+  private baseUrl = "http://localhost:3000/progress";
 
-  getAll(): ProgressItem[] {
-    return this.item;
+  // GET
+  async getAll() {
+    const res = await axios.get(this.baseUrl);
+    return res.data;
   }
 
-  add(item: ProgressItem): void {
-    this.item.push(item);
+  // ADD
+  async add(goal: string) {
+    const res = await axios.post(this.baseUrl, { goal });
+    return res.data;
   }
 
-  update(id: number, newStatus: string): void {
-    const found = this.item.find(i => i.id === id);
-    if (found) {
-      found.status = newStatus;
+  // UPDATE
+  async update(id: number, status: string) {
+    const res = await axios.put(`${this.baseUrl}/${id}`, { status });
+    return res.data;
   }
-} 
 
-  remove(id: number): void {
-    this.item = this.item.filter(i => i.id !== id);
+  // DELETE
+  async remove(id: number) {
+    const res = await axios.delete(`${this.baseUrl}/${id}`);
+    return res.data;
   }
 }
 
