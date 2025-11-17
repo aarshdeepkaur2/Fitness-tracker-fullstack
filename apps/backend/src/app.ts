@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
-
+import workoutlogRoutes from "./api/v1/routes/workoutlogRoutes";
 import errorHandler from "./api/v1/middleware/errorHandler";
 
 // initialize express application
@@ -32,7 +32,7 @@ app.get("/",  (_req, res) => {
     res.send("Backend is Running Sucessfully!!!");
 });
 
-
+app.use("/api/v1", workoutlogRoutes);
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked
