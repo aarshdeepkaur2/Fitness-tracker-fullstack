@@ -1,27 +1,38 @@
-import type { ProgressItem } from "../Components/mockdata/progressData";
-import { progressData } from "../Components/mockdata/progressData"
-
-
 export class ProgressRepository {
-  private item = [...progressData];
+  private baseUrl = "http://localhost:3000/progress";
 
-  getAll(): ProgressItem[] {
-    return this.item;
+  // GET all
+  async getAll() {
+    const res = await fetch(this.baseUrl);
+    return await res.json();
   }
 
-  add(item: ProgressItem): void {
-    this.item.push(item);
+  // POST create new goal
+  async add(goal: string) {
+    const res = await fetch(this.baseUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ goal })
+    });
+    return await res.json();
   }
 
-  update(id: number, newStatus: string): void {
-    const found = this.item.find(i => i.id === id);
-    if (found) {
-      found.status = newStatus;
+  // PUT update
+  async update(id: number, status: string) {
+    const res = await fetch(`${this.baseUrl}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status })
+    });
+    return await res.json();
   }
-} 
 
-  remove(id: number): void {
-    this.item = this.item.filter(i => i.id !== id);
+  // DELETE remove
+  async remove(id: number) {
+    const res = await fetch(`${this.baseUrl}/${id}`, {
+      method: "DELETE"
+    });
+    return await res.json();
   }
 }
 

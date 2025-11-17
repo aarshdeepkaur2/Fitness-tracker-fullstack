@@ -2,30 +2,21 @@ import { progressRepository } from "../apis/progressRepo";
 import type { ProgressItem } from "../Components/mockdata/progressData";
 
 export class ProgressService {
-  getAllProgress(): ProgressItem[] {
 
-    return progressRepository.getAll();
+  async getAllProgress(): Promise<ProgressItem[]> {
+    return await progressRepository.getAll();
   }
 
-  addNewGoal(goal: string): void {
-
-    const newItem: ProgressItem = {
-      id: Date.now(),
-      date: new Date().toISOString().split("T")[0],
-      goal,
-      status: "Not Started"
-    };
-    progressRepository.add(newItem);
+  async addNewGoal(goal: string): Promise<void> {
+    await progressRepository.add(goal);
   }
 
-  //  change goal status (Not Started / In Progress / Completed)
-
-  changeStatus(id: number, status: string): void {
-    progressRepository.update(id, status);
+  async changeStatus(id: number, status: string): Promise<void> {
+    await progressRepository.update(id, status);
   }
 
-  removeGoal(id: number): void {
-    progressRepository.remove(id);
+  async removeGoal(id: number): Promise<void> {
+    await progressRepository.remove(id);
   }
 }
 
