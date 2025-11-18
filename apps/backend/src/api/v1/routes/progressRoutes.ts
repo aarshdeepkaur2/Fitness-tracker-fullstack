@@ -1,11 +1,11 @@
 import { Router } from "express";
-import prisma from "@prisma/client";
+import  prisma  from "../../../../prisma/client";
 
 
 const router = Router();
 
 // GET all progress items
-router.get("/", async (req, res) => {
+router.get("/", async (_req, res) => {
   try {
     const progress = await prisma.progress.findMany({
       orderBy: { id: "asc" }

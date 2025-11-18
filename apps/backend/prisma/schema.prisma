@@ -39,3 +39,16 @@ model Meal {
   createdAt DateTime @default(now())
 }
 
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Progress {
+  id        Int      @id @default(autoincrement())
+  goal      String
+  date      DateTime @default(now())
+  status    Status   @default(NOT_STARTED)
+  createdAt DateTime @default(now())
+}
