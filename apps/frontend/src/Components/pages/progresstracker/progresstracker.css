@@ -1,0 +1,130 @@
+/* MAIN CONTAINER */
+.progress-tracker {
+  background-color: #eeeef0;
+  padding: 3.5rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 1000px;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* IMAGE */
+.progress-tracker img {
+  display: block;
+  margin: 0 auto 2rem;
+  max-width: 200px;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* HEADING */
+.progress-tracker h2 {
+  color: #3d4df2;
+  margin-bottom: 2rem;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* ------------------------- */
+/* FIXED FORM — BUTTON CLICK WORKS */
+/* ------------------------- */
+
+.progress-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 100; /* makes the Add button clickable */
+}
+
+.progress-form input {
+  width: 260px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+.add-btn {
+  background-color: #3d4df2;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.add-btn:hover {
+  background-color: #2e3dd9;
+}
+
+/* ------------------------- */
+/* LIST ITEMS (GOAL CARDS) */
+/* ------------------------- */
+
+.progress-tracker ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.progress-tracker li {
+  background: #ffffff;
+  border: 1px solid #d6d6d6;
+  border-radius: 12px;
+  padding: 1.2rem 1.8rem;
+  margin-bottom: 1.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-tracker li:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-color: #3d4df2;
+}
+
+/* ------------------------- */
+/* STATUS BUTTONS */
+/* ------------------------- */
+
+.status-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-buttons button {
+  background-color: #3d4df2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.status-buttons button:hover {
+  background-color: #2e3dd9;
+}
+
+/* REMOVE BUTTON */
+.status-buttons .remove {
+  background-color: #d33f49;
+}
+
+.status-buttons .remove:hover {
+  background-color: #b02a37;
+}
