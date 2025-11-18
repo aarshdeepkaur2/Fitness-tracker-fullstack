@@ -19,15 +19,3 @@ export const workoutSeedData: Omit<WorkoutLog, "id" | "createdAt" | "updatedAt" 
   { date: new Date("2025-08-26"), exercise: "Running", reps: "30 minutes at medium pace", favorite: false },
 ];
 
-export const mealData: Prisma.MealCreateInput[] = [
-  { name: "Oatmeal", calories: 150 },
-  { name: "Grilled Chicken", calories: 250 },
-  { name: "Salad", calories: 100 },
-  { name: "Protein Shake", calories: 200 },
-  { name: "Rice and Beans", calories: 300 },
-  { name: "Avocado Toast", calories: 180 },
-  { name: "Apple", calories: 90 },
-  { name: "Eggs", calories: 220 },
-  { name: "Smoothie", calories: 160 },
-  { name: "Tuna Sandwich", calories: 280 },
-];
