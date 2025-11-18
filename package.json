@@ -1,36 +1,36 @@
 {
   "name": "fitness-tracker",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "axios": "^1.13.2",
-    "lucide-react": "^0.544.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.3"
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "apps/*"], 
+    
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
   },
   "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@types/react-router-dom": "^5.3.3",
-    "@vitejs/plugin-react": "^5.0.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.16",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "concurrently": "^9.2.1"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm:start:frontend\" \"npm:start:backend\"",
+    "migrate:backend": "npx --workspace=@fitness-tracker/backend prisma migrate dev",
+    "start:frontend": "npm run dev --workspace=@fitness-tracker/frontend",
+    "start:backend": "npm start --workspace=@fitness-tracker/backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aarshdeepkaur2/Fitness-tracker-fullstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aarshdeepkaur2/Fitness-tracker-fullstack/issues"
+  },
+  "homepage": "https://github.com/aarshdeepkaur2/Fitness-tracker-fullstack#readme",
+  "dependencies": {
+    "typescript": "^5.9.3"
   }
 }
