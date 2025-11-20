@@ -34,7 +34,9 @@ app.get("/",  (_req, res) => {
 });
 
 app.use("/api/v1", workoutlogRoutes);
-app.use("/api/v1", prorgressRoutes);
+app.use("/api/v1/progress", prorgressRoutes);
+
+
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked

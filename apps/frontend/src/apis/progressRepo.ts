@@ -1,5 +1,5 @@
 export class ProgressRepository {
-  private baseUrl = "http://localhost:3000/progress";
+  private baseUrl = "http://localhost:4000/api/v1/progress";
 
   // GET all
   async getAll() {

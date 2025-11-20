@@ -1,0 +1,13 @@
+-- CreateEnum
+CREATE TYPE "Status" AS ENUM ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETED');
+
+-- CreateTable
+CREATE TABLE "Progress" (
+    "id" SERIAL NOT NULL,
+    "goal" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" "Status" NOT NULL DEFAULT 'NOT_STARTED',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Progress_pkey" PRIMARY KEY ("id")
+);

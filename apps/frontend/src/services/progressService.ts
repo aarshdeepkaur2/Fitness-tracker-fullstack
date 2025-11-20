@@ -1,6 +1,6 @@
 import type { ProgressItem } from "../Components/mockdata/progressData";
 
-const API = "http://localhost:3000/progress";
+const API = "http://localhost:4000/api/v1/progress";
 
 export class ProgressService {
   async getAllProgress(): Promise<ProgressItem[]> {
