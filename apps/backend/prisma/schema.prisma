@@ -14,23 +14,25 @@ datasource db {
 }
 
 model User {
-  id        String       @id @default(uuid())
-  name      String
-  email     String       @unique
-  workouts  WorkoutLog[] 
+  id         String    @id @default(uuid())
+  clerkId    String?   @unique
+  name       String?
+  email      String?
+  workouts   WorkoutLog[]
 }
 
 model WorkoutLog {
-  id         String    @id @default(uuid())
+  id         String   @id @default(uuid())
   date       DateTime
   exercise   String
   reps       String
-  favorite   Boolean   @default(false)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  userId     String?  
+  favorite   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId     String?
   user       User?     @relation(fields: [userId], references: [id])
 }
+
 
 model Meal {
   id        Int      @id @default(autoincrement())
