@@ -1,9 +1,9 @@
 {
   "relatedProjects": ["prj_yZyWb2W2pxzrpI0Ae1P6r4VYBxON"],
-  "git": {
-    "deploymentEnabled": {
-      "*": false,
-      "master": true
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
     }
-  }
+  ]
 }
