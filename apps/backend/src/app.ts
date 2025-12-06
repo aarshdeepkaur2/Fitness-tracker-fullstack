@@ -7,7 +7,10 @@ import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
 import workoutlogRoutes from "./api/v1/routes/workoutlogRoutes";
 import prorgressRoutes from "./api/v1/routes/progressRoutes";
+import MealRoutes from "./api/v1/routes/mealtackerRoutes";
 import errorHandler from "./api/v1/middleware/errorHandler";
+import { clerkMiddleware } from '@clerk/express'
+import { findOrCreateUser } from "./api/v1/middleware/findOrCreate";
 
 // initialize express application
 const app: Express = express();
@@ -19,7 +22,9 @@ app.use(morgan("combined"));
 
 // allow express to parse json
 app.use(express.json());
+app.use(clerkMiddleware());
 
+app.use(findOrCreateUser);
 // add Cross-Origin Resource Sharing middleware
 // This will refuse requests from origins that do not fulfill corsOptions requirements
 // see https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
@@ -35,6 +40,7 @@ app.get("/",  (_req, res) => {
 
 app.use("/api/v1", workoutlogRoutes);
 app.use("/api/v1/progress", prorgressRoutes);
+app.use("/api/v1", MealRoutes);
 
 
 

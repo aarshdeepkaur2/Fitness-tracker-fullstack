@@ -1,57 +1,50 @@
-import type { Workout } from "../Components/types/workout";
-import * as workoutRepository from "../apis/workoutRepo";
+import type { Workout } from "../../types/workout";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const WorkoutService = {
-  async fetchWorkouts(): Promise<Workout[]> {
-    return await workoutRepository.fetchWorkouts();
+  fetchWorkouts: async (): Promise<Workout[]> => {
+    const res = await fetch(`${API_URL}/workouts`, {
+      credentials: "include",
+    });
+    const data = await res.json();
+    return data.data;
   },
 
-  async addWorkout(workout: Omit<Workout, "id" | "favorite">): Promise<Workout> {
-    const validationErrors = this.validateWorkout(workout);
-    if (validationErrors.size > 0) {
-      const errorMessage = Array.from(validationErrors.values()).join("\n");
-      throw new Error(errorMessage);
-    }
-    return await workoutRepository.createWorkout(workout);
+  addWorkout: async (workout: Omit<Workout, "id" | "favorite">): Promise<Workout> => {
+    const res = await fetch(`${API_URL}/workouts`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(workout),
+    });
+    const data = await res.json();
+    return data.data;
   },
 
-  async updateWorkout(id: number, updates: Partial<Workout>): Promise<Workout | null> {
-    const workoutToUpdate = { id, ...updates } as Workout;
-    return await workoutRepository.updateWorkout(workoutToUpdate);
+  updateWorkout: async (id: string, updates: Partial<Workout>): Promise<Workout> => {
+    const res = await fetch(`${API_URL}/workouts/${id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updates),
+    });
+    const data = await res.json();
+    return data.data;
   },
 
-  async removeWorkout(id: number): Promise<boolean> {
-    return await workoutRepository.deleteWorkout(id);
+  removeWorkout: async (id: string): Promise<void> => {
+    await fetch(`${API_URL}/workouts/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
   },
 
-  async toggleFavorite(id: string): Promise<Workout> {
-    return await workoutRepository.toggleFavoriteWorkout(id);
-  },
-
-  validateWorkout(workout: Partial<Workout>): Map<string, string> {
-    const validationErrors = new Map<string, string>();
-
-    if (!workout.date?.trim()) {
-      validationErrors.set("date", "Date is required.");
-    } else {
-      const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-      if (!datePattern.test(workout.date)) {
-        validationErrors.set("date", "Date must be in YYYY-MM-DD format.");
-      }
-    }
-
-    if (!workout.exercise?.trim()) {
-      validationErrors.set("exercise", "Exercise name is required.");
-    } else if (workout.exercise.trim().length < 3) {
-      validationErrors.set("exercise", "Exercise name must be at least 3 characters long.");
-    }
-
-    if (!workout.reps?.trim()) {
-      validationErrors.set("reps", "Repetitions detail is required.");
-    } else if (!/\d+/.test(workout.reps)) {
-      validationErrors.set("reps", "Repetitions must include a numeric value (e.g., '3 sets of 10').");
-    }
-
-    return validationErrors;
+  toggleFavorite: async (id: string): Promise<Workout> => {
+    const res = await fetch(`${API_URL}/workouts/${id}/favorite`, {
+      method: "PATCH",
+      credentials: "include",
+    });
+    const data = await res.json();
+    return data.data;
   },
 };
