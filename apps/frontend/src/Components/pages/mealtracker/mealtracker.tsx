@@ -1,4 +1,3 @@
-import React from "react";
 import "./mealtracker.css";
 import MealForm from "./MealForm";
 import { useMeals } from "../../../hooks/useMeals";
