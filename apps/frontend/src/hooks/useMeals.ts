@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Meal } from "../types/Meal";
+import type { Meal } from "../Components/types/Meal";
 import { mealService } from "../services/mealService";
 
 

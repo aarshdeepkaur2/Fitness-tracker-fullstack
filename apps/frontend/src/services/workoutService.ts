@@ -1,4 +1,4 @@
-import type { Workout } from "../../types/workout";
+import type { Workout } from "../Components/types/workout";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const WorkoutService = {

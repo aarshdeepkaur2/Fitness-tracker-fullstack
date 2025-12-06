@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Meal } from "../../../types/Meal";
+import type { Meal } from "../../types/Meal";
 
 interface Props {
   onAddMeal: (meal: Meal) => void;

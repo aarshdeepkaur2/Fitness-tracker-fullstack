@@ -1,9 +1,16 @@
 {
-  "relatedProjects": ["<backend-project-id>"],
-  "git": {
-    "deploymentEnabled": {
-      "*": false,
-      "main": true
+  "relatedProjects": ["prj_yZyWb2W2pxzrpI0Ae1P6r4VYBxON"],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
     }
-  }
+  ],
+    "git": {
+        "deploymentEnabled": {
+            "*": false,
+            "master": true
+        }
+    }
 }
+

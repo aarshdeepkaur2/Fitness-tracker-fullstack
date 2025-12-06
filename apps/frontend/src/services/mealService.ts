@@ -1,4 +1,4 @@
-import type { Meal } from "../../types/Meal";
+import type { Meal } from "../Components/types/Meal";
 import { mealRepository } from "../apis/mealRepository";
 
 
