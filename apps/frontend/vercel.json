@@ -1,0 +1,9 @@
+{
+  "relatedProjects": ["<frontend-project-id>"],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
+}
