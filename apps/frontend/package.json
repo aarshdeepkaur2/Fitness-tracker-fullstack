@@ -6,7 +6,6 @@
   "scripts": {
     "build": "vite build",
     "vercel-build": "tsc -b && vite build --mode production",
-    "lint": "eslint .",
     "preview": "vite preview",
     "dev": "vite"
   },

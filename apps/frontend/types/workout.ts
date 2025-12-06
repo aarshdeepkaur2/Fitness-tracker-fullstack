@@ -3,5 +3,5 @@ export interface Workout {
   date: string;
   exercise: string;
   reps: string;
-   favorite: boolean;
+  favorite: boolean;
 }
