@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { WorkoutService } from "../services/workoutService";
-import type { Workout } from "../../types/workout";
+import type { Workout } from "../Components/types/types/workout";
 
 interface FilterOptions {
   search: string;

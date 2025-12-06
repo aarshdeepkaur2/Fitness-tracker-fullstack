@@ -47,7 +47,7 @@ export default function WorkoutLog() {
   };
 
   // Remove workout using hook
-  const handleRemoveWorkout = (id: number) => {
+  const handleRemoveWorkout = (id: string) => {
     removeWorkout(id);
   };
 

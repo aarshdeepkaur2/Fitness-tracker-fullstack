@@ -1,4 +1,4 @@
-import type { Meal } from "../../types/Meal";
+import type { Meal } from "../Components/types/types/Meal";
 import { testMeals } from "../Components/mockdata/meals";
 
 
