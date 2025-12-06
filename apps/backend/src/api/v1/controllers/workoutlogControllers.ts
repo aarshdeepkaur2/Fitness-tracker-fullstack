@@ -1,100 +1,57 @@
 import { Request, Response, NextFunction } from "express";
-import { WorkoutLog } from "@prisma/client";
 import * as workoutService from "../services/workoutlogServices";
 import { successResponse } from "../models/responsemodel";
 
-export const getAllWorkouts = async (
-  _req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const getAllWorkouts = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const workouts = await workoutService.fetchAllWorkouts();
-    res
-      .status(200)
-      .json(successResponse(workouts, "Workouts have retrieved successfully"));
+    const workouts = await workoutService.fetchAllWorkouts(req.userId!);
+    res.status(200).json(successResponse(workouts, "Workouts retrieved successfully"));
   } catch (error) {
     next(error);
   }
 };
 
-export const getWorkoutById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const getWorkoutById = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const workoutId = req.params.id;
-    const workout: WorkoutLog | null = await workoutService.getWorkoutById(workoutId);
-
-    if (workout) {
-      res
-        .status(200)
-        .json(successResponse(workout, "Workout has been retrieved successfully"));
-    } else {
-      throw new Error("Workout cannot be found");
-    }
+    const workout = await workoutService.getWorkoutById(req.params.id, req.userId!);
+    if (!workout) return res.status(404).json({ error: "Workout not found" });
+    res.status(200).json(successResponse(workout, "Workout retrieved"));
   } catch (error) {
     next(error);
   }
 };
 
-export const createWorkout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const createWorkout = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newWorkout = await workoutService.createWorkout(req.body);
-    res
-      .status(201)
-      .json(successResponse(newWorkout, "Workout has been created successfully"));
+    const workout = await workoutService.createWorkout(req.userId!, req.body);
+    res.status(201).json(successResponse(workout, "Workout created"));
   } catch (error) {
     next(error);
   }
 };
 
-export const updateWorkout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const updateWorkout = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const workoutId = req.params.id;
-    const updatedWorkout = await workoutService.updateWorkout(workoutId, req.body);
-    res
-      .status(200)
-      .json(successResponse(updatedWorkout, "Workout has been updated successfully"));
+    const workout = await workoutService.updateWorkout(req.params.id, req.userId!, req.body);
+    res.status(200).json(successResponse(workout, "Workout updated"));
   } catch (error) {
     next(error);
   }
 };
 
-export const deleteWorkout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const deleteWorkout = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const workoutId = req.params.id;
-    await workoutService.deleteWorkout(workoutId);
-    res.status(200).json(successResponse(null, "Workout has been deleted successfully"));
+    await workoutService.deleteWorkout(req.params.id, req.userId!);
+    res.status(200).json(successResponse(null, "Workout deleted"));
   } catch (error) {
     next(error);
   }
 };
 
-export const toggleFavoriteWorkout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const toggleFavoriteWorkout = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const workoutId = req.params.id;
-    const updatedWorkout = await workoutService.toggleFavoriteWorkout(workoutId);
-    res
-      .status(200)
-      .json(successResponse(updatedWorkout, "Favorite status has been toggled successfully!!"));
+    const workout = await workoutService.toggleFavoriteWorkout(req.params.id, req.userId!);
+    res.status(200).json(successResponse(workout, "Favorite toggled"));
   } catch (error) {
     next(error);
   }

@@ -2,6 +2,8 @@ import express from "express";
 import * as workoutController from "../controllers/workoutlogControllers";
 import { validateRequest } from "../middleware/validate";
 import { workoutSchema } from "../validations/workoutlogValidation";
+import { requireAuth } from "@clerk/express";
+import { findOrCreateUser } from "../middleware/findOrCreate";
 
 const router = express.Router();
 
@@ -15,7 +17,7 @@ const router = express.Router();
  *       200:
  *         description: List of all workouts
  */
-router.get("/workouts", workoutController.getAllWorkouts);
+router.get("/workouts", requireAuth(),workoutController.getAllWorkouts);
 
 /**
  * @swagger
@@ -36,7 +38,7 @@ router.get("/workouts", workoutController.getAllWorkouts);
  *       404:
  *         description: Workout not found
  */
-router.get("/workouts/:id", workoutController.getWorkoutById);
+router.get("/workouts/:id",requireAuth(), workoutController.getWorkoutById);
 
 /**
  * @swagger
@@ -73,7 +75,7 @@ router.get("/workouts/:id", workoutController.getWorkoutById);
  *       400:
  *         description: Invalid input
  */
-router.post("/workouts", validateRequest(workoutSchema), workoutController.createWorkout);
+router.post("/workouts",requireAuth(),findOrCreateUser, validateRequest(workoutSchema), workoutController.createWorkout);
 
 /**
  * @swagger
@@ -113,7 +115,7 @@ router.post("/workouts", validateRequest(workoutSchema), workoutController.creat
  *       404:
  *         description: Workout not found
  */
-router.put("/workouts/:id", validateRequest(workoutSchema), workoutController.updateWorkout);
+router.put("/workouts/:id", requireAuth(),findOrCreateUser, validateRequest(workoutSchema), workoutController.updateWorkout);
 
 /**
  * @swagger
@@ -134,7 +136,7 @@ router.put("/workouts/:id", validateRequest(workoutSchema), workoutController.up
  *       404:
  *         description: Workout not found
  */
-router.delete("/workouts/:id", workoutController.deleteWorkout);
+router.delete("/workouts/:id",requireAuth(),findOrCreateUser, workoutController.deleteWorkout);
 
 /**
  * @swagger
