@@ -12,8 +12,7 @@
     "prisma:studio": "npx prisma studio",
     "prisma:seed": "ts-node prisma/seed.ts",
     "vercel-build": "prisma migrate deploy && prisma db seed && npm run build",
-   // Have prisma generate its client after deployment
-   "postinstall": "prisma generate"
+    "postinstall": "prisma generate"
 
   },
   "keywords": [],
